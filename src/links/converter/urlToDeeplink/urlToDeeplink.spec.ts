@@ -28,11 +28,11 @@ describe('UrlToDeeplink method tests', () => {
   it('UrlToDeeplink Search&Query', () => {
     let source: FromUrlToDeeplinkDto = {
       id: 1,
-      source: 'https://www.trendyol.com/sr?q=elbise',
+      source: 'https://www.brandway.com/sr?q=elbise',
       target: '',
     };
     expect(searchUrlBuilder.builder(source)).toEqual(
-      'ty://?Page=Search&Query=elbise',
+      'bw://?Page=Search&Query=elbise',
     );
   });
 
@@ -40,22 +40,22 @@ describe('UrlToDeeplink method tests', () => {
     let source: FromUrlToDeeplinkDto = {
       id: 2,
       source:
-        'https://www.trendyol.com/casio/saat-p-1925865?boutiqueId=439892&merchantId=105064',
+        'https://www.brandway.com/casio/saat-p-1925865?boutiqueId=439892&merchantId=105064',
       target: '',
     };
     expect(productDetailUrlBuilder.builder(source)).toEqual(
-      'ty://?Page=Product&ContentId=1925865&CampaignId=439892&MerchantId=105064',
+      'bw://?Page=Product&ContentId=1925865&CampaignId=439892&MerchantId=105064',
     );
   });
 
   it('UrlToDeeplink Product&Detail only Product&ContentId', () => {
     let source: FromUrlToDeeplinkDto = {
       id: 3,
-      source: 'https://www.trendyol.com/casio/erkek-kol-saati-p-1925865',
+      source: 'https://www.brandway.com/casio/erkek-kol-saati-p-1925865',
       target: '',
     };
     expect(productDetailUrlBuilder.builder(source)).toEqual(
-      'ty://?Page=Product&ContentId=1925865',
+      'bw://?Page=Product&ContentId=1925865',
     );
   });
 
@@ -63,11 +63,11 @@ describe('UrlToDeeplink method tests', () => {
     let source: FromUrlToDeeplinkDto = {
       id: 4,
       source:
-        'https://www.trendyol.com/casio/erkek-kol-saati-p-1925865?boutiqueId=439892',
+        'https://www.brandway.com/casio/erkek-kol-saati-p-1925865?boutiqueId=439892',
       target: '',
     };
     expect(productDetailUrlBuilder.builder(source)).toEqual(
-      'ty://?Page=Product&ContentId=1925865&CampaignId=439892',
+      'bw://?Page=Product&ContentId=1925865&CampaignId=439892',
     );
   });
 
@@ -75,23 +75,23 @@ describe('UrlToDeeplink method tests', () => {
     let source: FromUrlToDeeplinkDto = {
       id: 5,
       source:
-        'https://www.trendyol.com/casio/erkek-kol-saati-p-1925865?merchantId=105064',
+        'https://www.brandway.com/casio/erkek-kol-saati-p-1925865?merchantId=105064',
       target: '',
     };
     expect(productDetailUrlBuilder.builder(source)).toEqual(
-      'ty://?Page=Product&ContentId=1925865&MerchantId=105064',
+      'bw://?Page=Product&ContentId=1925865&MerchantId=105064',
     );
   });
 
   it('UrlToDeeplink Others', () => {
     let source: FromUrlToDeeplinkDto = {
       id: 6,
-      source: 'https://www.trendyol.com/Hesabim/Favoriler',
+      source: 'https://www.brandway.com/Hesabim/Favoriler',
       target: '',
     };
 
     expect(urlToDeeplinkLogicalService.urlToDeeplinkService(source)).toEqual(
-      'ty://?Page=Home',
+      'bw://?Page=Home',
     );
   });
 });

@@ -1,9 +1,9 @@
 const enum Constant {
   //use inside urlToDeeplink folder
 
-  HOMEPAGE_DEEPLINK_PD = 'ty://?Page=Product&ContentId=',
-  HOMEPAGE_DEEPLINK_SR = 'ty://?Page=Search&Query=',
-  HOMEPAGE_DEEPLINK = 'ty://?Page=Home',
+  HOMEPAGE_DEEPLINK_PD = 'bw://?Page=Product&ContentId=',
+  HOMEPAGE_DEEPLINK_SR = 'bw://?Page=Search&Query=',
+  HOMEPAGE_DEEPLINK = 'bw://?Page=Home',
 
   P_PARAM = '-p-',
   Q_PARAM = '?',
@@ -22,9 +22,9 @@ const enum Constant {
 
   //use inside deeplinkToUrl folder
 
-  HOMEPAGE_LINK = 'https://www.trendyol.com',
-  HOMEPAGE_SR = 'https://www.trendyol.com/sr?q=',
-  HOMEPAGE_BRAND = 'https://www.trendyol.com/brand/name-p-',
+  HOMEPAGE_LINK = 'https://www.brandway.com',
+  HOMEPAGE_SR = 'https://www.brandway.com/sr?q=',
+  HOMEPAGE_BRAND = 'https://www.brandway.com/brand/name-p-',
 
   PRODUCT_CONTENTID = 'Product&ContentId=',
 
