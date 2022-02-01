@@ -1,73 +1,110 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+This folder includes node.js restful api which is written for a company case study.
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This is an API project that converts web url links to deeplinks or deeplinks to web url in certain formats.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Technologies and Tools I use:
 
-## Description
+:ballot_box_with_check: Back-end: Node.js => Nest.js
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+:ballot_box_with_check: Database: PostgreSql
 
-## Installation
+:ballot_box_with_check: TypeScript, TypeORM
 
-```bash
-$ npm install
+:ballot_box_with_check: Testing: Jest
+
+:ballot_box_with_check: Docker
+
+### Usage
+
+Clone the repository
+
+```
+cd desktop
+git clone https://github.com/mavisalli/Link-Converter-Case-NestJs.git
 ```
 
-## Running the app
+Then open the project in ide and follow below commands:
 
-```bash
-# development
-$ npm run start
+Create environment file (.development.env) for your config information of your database and fill the content as below
 
-# watch mode
-$ npm run start:dev
+#### Postgres config
 
-# production mode
-$ npm run start:prod
+```
+TYPE=
+HOST=
+PORT=
+USER=
+PASSWORD=
+DATABASE=
 ```
 
-## Test
+Install dependencies and run app server with development mode
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+```
+npm install
+npm run start:dev
 ```
 
-## Support
+There are 12 function tests for all link formats specified in the case file.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```
+npm run test
+```
 
-## Stay in touch
+## Usage with Docker
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```
+docker-compose up -d
+```
 
-## License
+### Testing
 
-Nest is [MIT licensed](LICENSE).
+```
+docker exec link-converter_backend_1 npm run test
+```
+
+## API Details
+
+`POST /url-to-deeplink`
+
+Convert URLs to deeplinks. Example request body:
+
+```
+{
+    "source": "https://www.trendyol.com/casio/saat-p-1925865?boutiqueId=439892&merchantId=105064"
+}
+```
+
+Response to this request:
+
+```
+{
+    "source": "https://www.trendyol.com/casio/saat-p-1925865?boutiqueId=439892&merchantId=105064",
+    "target": "ty://?Page=Product&ContentId=1925865&CampaignId=439892&MerchantId=105064",
+    "id": 1
+}
+```
+
+`POST /deeplink-to-url`
+
+Convert deeplinks to URLs. Example request body:
+
+```
+{
+    "source": "ty://?Page=Product&ContentId=1925865&CampaignId=439892&MerchantId=105064"
+}
+```
+
+Response to this request:
+
+```
+{
+    "source": "ty://?Page=Product&ContentId=1925865&CampaignId=439892&MerchantId=105064",
+    "target": "https://www.trendyol.com/brand/name-p-1925865?boutiqueId=439892&merchantId=105064",
+    "id": 2
+}
+```
+
+### Postman Collection
+
+https://www.postman.com/mavibaris/workspace/trendyol-case/collection/16085875-0608311d-3cfd-4666-8b78-0e6314286a55
