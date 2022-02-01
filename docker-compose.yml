@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  postgres-db:
+    image: postgres:12
+    container_name: postgres-db
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_USER: postgres
+      POSTGRES_DB: link-conversion-db
+
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+  backend:
+    build: .
+    ports:
+      - '3000:3000'
+    environment:
+      HOST: postgres-db
+      DATABASE: link-conversion-db
+      USER: postgres
+      PORT: 5432
+    depends_on:
+      - postgres-db
