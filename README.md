@@ -1,5 +1,7 @@
 This folder includes node.js restful api which is written for a company case study.
 
+You can find the requirements of the case via the Case-Requirements.pdf file in the repo.
+
 This is an API project that converts web url links to deeplinks or deeplinks to web url in certain formats when you want to redirect between applications.
 
 Technologies and Tools I use:
