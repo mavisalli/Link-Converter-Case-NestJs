@@ -1,6 +1,6 @@
 This folder includes node.js restful api which is written for a company case study.
 
-This is an API project that converts web url links to deeplinks or deeplinks to web url in certain formats.
+This is an API project that converts web url links to deeplinks or deeplinks to web url in certain formats when you want to redirect between applications.
 
 Technologies and Tools I use:
 
@@ -71,7 +71,7 @@ Convert URLs to deeplinks. Example request body:
 
 ```
 {
-    "source": "https://www.trendyol.com/casio/saat-p-1925865?boutiqueId=439892&merchantId=105064"
+    "source": "https://www.brandway.com/casio/saat-p-1925865?boutiqueId=439892&merchantId=105064"
 }
 ```
 
@@ -79,8 +79,8 @@ Response to this request:
 
 ```
 {
-    "source": "https://www.trendyol.com/casio/saat-p-1925865?boutiqueId=439892&merchantId=105064",
-    "target": "ty://?Page=Product&ContentId=1925865&CampaignId=439892&MerchantId=105064",
+    "source": "https://www.brandway.com/casio/saat-p-1925865?boutiqueId=439892&merchantId=105064",
+    "target": "bw://?Page=Product&ContentId=1925865&CampaignId=439892&MerchantId=105064",
     "id": 1
 }
 ```
@@ -91,7 +91,7 @@ Convert deeplinks to URLs. Example request body:
 
 ```
 {
-    "source": "ty://?Page=Product&ContentId=1925865&CampaignId=439892&MerchantId=105064"
+    "source": "bw://?Page=Product&ContentId=1925865&CampaignId=439892&MerchantId=105064"
 }
 ```
 
@@ -99,12 +99,12 @@ Response to this request:
 
 ```
 {
-    "source": "ty://?Page=Product&ContentId=1925865&CampaignId=439892&MerchantId=105064",
-    "target": "https://www.trendyol.com/brand/name-p-1925865?boutiqueId=439892&merchantId=105064",
+    "source": "bw://?Page=Product&ContentId=1925865&CampaignId=439892&MerchantId=105064",
+    "target": "https://www.brandway.com/brand/name-p-1925865?boutiqueId=439892&merchantId=105064",
     "id": 2
 }
 ```
 
 ### Postman Collection
 
-https://www.postman.com/mavibaris/workspace/trendyol-case/collection/16085875-0608311d-3cfd-4666-8b78-0e6314286a55
+https://www.postman.com/mavibaris/workspace/link-converter-case/collection/16085875-0608311d-3cfd-4666-8b78-0e6314286a55
